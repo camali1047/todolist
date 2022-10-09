@@ -67,15 +67,6 @@ app.get("/", function (req, res) {
 });
 
 
-
-app.get("/deneme/items",function(req,res){
-  Item.find({},function(err,items){
-    if(err) console.log();
-    res.send(items);
-  })
-});
-
-
 app.get("/:customListName",function(req,res){
 const customListName=_.capitalize(req.params.customListName);
  List.findOne({name: customListName },function(err,list){
@@ -141,6 +132,8 @@ List.findOneAndUpdate({name:customListName},{$pull:{items:{_id:item}}}, function
     })
   }
 });
+
+
 
 
 
